@@ -5,7 +5,7 @@
 
 ## `EvaluateCore`: Quality Evaluation of Core Collections <img src="https://raw.githubusercontent.com/aravind-j/EvaluateCore/master/inst/extdata/EvaluateCore.png" align="right" alt="logo" width="173" height = "200" style = "border: none; float: right;">
 
-###### Version : [0.1.2](https://aravind-j.github.io/EvaluateCore/); Copyright (C) 2018-2021: [ICAR-NBPGR](http://www.nbpgr.ernet.in/); License: [GPL-2\|GPL-3](https://www.r-project.org/Licenses/)
+###### Version : [0.1.3](https://aravind-j.github.io/EvaluateCore/); Copyright (C) 2018-2022: [ICAR-NBPGR](http://www.nbpgr.ernet.in/); License: [GPL-2\|GPL-3](https://www.r-project.org/Licenses/)
 
 ##### *Aravind, J.<sup>1</sup>, Kaur, V.<sup>2</sup>, Wankhede, D. P.<sup>3</sup> and Nanjundan, J.<sup>4</sup>*
 
@@ -28,14 +28,14 @@ v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org
 [![Dependencies](https://tinyverse.netlify.com/badge/EvaluateCore)](https://cran.r-project.org/package=EvaluateCore)
 [![rstudio mirror
 downloads](https://cranlogs.r-pkg.org/badges/grand-total/EvaluateCore?color=green)](https://CRAN.R-project.org/package=EvaluateCore)
-[![develVersion](https://img.shields.io/badge/devel%20version-0.1.1.9000-orange.svg)](https://github.com/aravind-j/EvaluateCore)
+[![develVersion](https://img.shields.io/badge/devel%20version-0.1.3-orange.svg)](https://github.com/aravind-j/EvaluateCore)
 [![Github Code
 Size](https://img.shields.io/github/languages/code-size/aravind-j/EvaluateCore.svg)](https://github.com/aravind-j/EvaluateCore)
 [![R-CMD-check](https://github.com/aravind-j/EvaluateCore/workflows/R-CMD-check/badge.svg)](https://github.com/aravind-j/EvaluateCore/actions)
 [![Project Status:
 WIP](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2021--06--11-yellowgreen.svg)](https://github.com/aravind-j/EvaluateCore/)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2022--06--30-yellowgreen.svg)](https://github.com/aravind-j/EvaluateCore/)
 [![Zenodo
 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3875930.svg)](https://doi.org/10.5281/zenodo.3875930)
 [![Website -
@@ -102,6 +102,8 @@ news(package='EvaluateCore')
 
 ## CRAN checks
 
+    Warning: package 'RCurl' was built under R version 4.1.3
+
 <table class="table table-striped table-hover" style="width: auto !important; ">
 <thead>
 <tr>
@@ -116,7 +118,7 @@ CRAN check
 <tbody>
 <tr grouplength="6">
 <td colspan="2" style="border-bottom: 1px solid;">
-<strong>[![Linux](https://shields.io/badge/Linux--9cf?logo=Linux&style=social)](https://cran.r-project.org/web/checks/check_results_ammistability.html)</strong>
+<strong>[![Linux](https://shields.io/badge/Linux--9cf?logo=Linux&style=social)](https://cran.r-project.org/web/checks/check_results_j.aravind_at_icar.gov.in.html)</strong>
 </td>
 </tr>
 <tr>
@@ -125,7 +127,7 @@ r-devel-linux-x86\_64-debian-clang
 </td>
 <td style="text-align:left;">
 [![CRAN check -
-r-devel-linux-x86\_64-debian-clang](https://cranchecks.info/badges/flavor/r-devel-linux-x86_64-debian-clang/EvaluateCore)](https://cran.r-project.org/web/checks/check_results_EvaluateCore.html)
+r-devel-linux-x86\_64-debian-clang](https://cranchecks.info/badges/flavor/r-devel-linux-x86_64-debian-clang/EvaluateCore)](https://cran.r-project.org/web/checks/check_results_j.aravind_at_icar.gov.in.html)
 </td>
 </tr>
 <tr>
@@ -134,7 +136,7 @@ r-devel-linux-x86\_64-debian-gcc
 </td>
 <td style="text-align:left;">
 [![CRAN check -
-r-devel-linux-x86\_64-debian-gcc](https://cranchecks.info/badges/flavor/r-devel-linux-x86_64-debian-gcc/EvaluateCore)](https://cran.r-project.org/web/checks/check_results_EvaluateCore.html)
+r-devel-linux-x86\_64-debian-gcc](https://cranchecks.info/badges/flavor/r-devel-linux-x86_64-debian-gcc/EvaluateCore)](https://cran.r-project.org/web/checks/check_results_j.aravind_at_icar.gov.in.html)
 </td>
 </tr>
 <tr>
@@ -143,7 +145,7 @@ r-devel-linux-x86\_64-fedora-clang
 </td>
 <td style="text-align:left;">
 [![CRAN check -
-r-devel-linux-x86\_64-fedora-clang](https://cranchecks.info/badges/flavor/r-devel-linux-x86_64-fedora-clang/EvaluateCore)](https://cran.r-project.org/web/checks/check_results_EvaluateCore.html)
+r-devel-linux-x86\_64-fedora-clang](https://cranchecks.info/badges/flavor/r-devel-linux-x86_64-fedora-clang/EvaluateCore)](https://cran.r-project.org/web/checks/check_results_j.aravind_at_icar.gov.in.html)
 </td>
 </tr>
 <tr>
@@ -152,7 +154,7 @@ r-devel-linux-x86\_64-fedora-gcc
 </td>
 <td style="text-align:left;">
 [![CRAN check -
-r-devel-linux-x86\_64-fedora-gcc](https://cranchecks.info/badges/flavor/r-devel-linux-x86_64-fedora-gcc/EvaluateCore)](https://cran.r-project.org/web/checks/check_results_EvaluateCore.html)
+r-devel-linux-x86\_64-fedora-gcc](https://cranchecks.info/badges/flavor/r-devel-linux-x86_64-fedora-gcc/EvaluateCore)](https://cran.r-project.org/web/checks/check_results_j.aravind_at_icar.gov.in.html)
 </td>
 </tr>
 <tr>
@@ -161,7 +163,7 @@ r-patched-linux-x86\_64
 </td>
 <td style="text-align:left;">
 [![CRAN check -
-r-patched-linux-x86\_64](https://cranchecks.info/badges/flavor/r-patched-linux-x86_64/EvaluateCore)](https://cran.r-project.org/web/checks/check_results_EvaluateCore.html)
+r-patched-linux-x86\_64](https://cranchecks.info/badges/flavor/r-patched-linux-x86_64/EvaluateCore)](https://cran.r-project.org/web/checks/check_results_j.aravind_at_icar.gov.in.html)
 </td>
 </tr>
 <tr>
@@ -170,12 +172,12 @@ r-release-linux-x86\_64
 </td>
 <td style="text-align:left;">
 [![CRAN check -
-r-release-linux-x86\_64](https://cranchecks.info/badges/flavor/r-release-linux-x86_64/EvaluateCore)](https://cran.r-project.org/web/checks/check_results_EvaluateCore.html)
+r-release-linux-x86\_64](https://cranchecks.info/badges/flavor/r-release-linux-x86_64/EvaluateCore)](https://cran.r-project.org/web/checks/check_results_j.aravind_at_icar.gov.in.html)
 </td>
 </tr>
 <tr grouplength="1">
 <td colspan="2" style="border-bottom: 1px solid;">
-<strong>[![Solaris](https://shields.io/badge/Solaris--9cf?logo=Oracle&style=social)](https://cran.r-project.org/web/checks/check_results_ammistability.html)</strong>
+<strong>[![Solaris](https://shields.io/badge/Solaris--9cf?logo=Oracle&style=social)](https://cran.r-project.org/web/checks/check_results_j.aravind_at_icar.gov.in.html)</strong>
 </td>
 </tr>
 <tr>
@@ -184,12 +186,12 @@ r-patched-solaris-x86
 </td>
 <td style="text-align:left;">
 [![CRAN check -
-r-patched-solaris-x86](https://cranchecks.info/badges/flavor/r-patched-solaris-x86/EvaluateCore)](https://cran.r-project.org/web/checks/check_results_EvaluateCore.html)
+r-patched-solaris-x86](https://cranchecks.info/badges/flavor/r-patched-solaris-x86/EvaluateCore)](https://cran.r-project.org/web/checks/check_results_j.aravind_at_icar.gov.in.html)
 </td>
 </tr>
 <tr grouplength="3">
 <td colspan="2" style="border-bottom: 1px solid;">
-<strong>[![Windows](https://shields.io/badge/Windows--9cf?logo=Windows&style=social)](https://cran.r-project.org/web/checks/check_results_ammistability.html)</strong>
+<strong>[![Windows](https://shields.io/badge/Windows--9cf?logo=Windows&style=social)](https://cran.r-project.org/web/checks/check_results_j.aravind_at_icar.gov.in.html)</strong>
 </td>
 </tr>
 <tr>
@@ -198,7 +200,7 @@ r-devel-windows-ix86+x86\_64
 </td>
 <td style="text-align:left;">
 [![CRAN check -
-r-devel-windows-ix86+x86\_64](https://cranchecks.info/badges/flavor/r-devel-windows-ix86+x86_64/EvaluateCore)](https://cran.r-project.org/web/checks/check_results_EvaluateCore.html)
+r-devel-windows-ix86+x86\_64](https://cranchecks.info/badges/flavor/r-devel-windows-ix86+x86_64/EvaluateCore)](https://cran.r-project.org/web/checks/check_results_j.aravind_at_icar.gov.in.html)
 </td>
 </tr>
 <tr>
@@ -207,7 +209,7 @@ r-release-windows-ix86+x86\_64
 </td>
 <td style="text-align:left;">
 [![CRAN check -
-r-release-windows-ix86+x86\_64](https://cranchecks.info/badges/flavor/r-release-windows-ix86+x86_64/EvaluateCore)](https://cran.r-project.org/web/checks/check_results_EvaluateCore.html)
+r-release-windows-ix86+x86\_64](https://cranchecks.info/badges/flavor/r-release-windows-ix86+x86_64/EvaluateCore)](https://cran.r-project.org/web/checks/check_results_j.aravind_at_icar.gov.in.html)
 </td>
 </tr>
 <tr>
@@ -216,12 +218,12 @@ r-oldrel-windows-ix86+x86\_64
 </td>
 <td style="text-align:left;">
 [![CRAN check -
-r-oldrel-windows-ix86+x86\_64](https://cranchecks.info/badges/flavor/r-oldrel-windows-ix86+x86_64/EvaluateCore)](https://cran.r-project.org/web/checks/check_results_EvaluateCore.html)
+r-oldrel-windows-ix86+x86\_64](https://cranchecks.info/badges/flavor/r-oldrel-windows-ix86+x86_64/EvaluateCore)](https://cran.r-project.org/web/checks/check_results_j.aravind_at_icar.gov.in.html)
 </td>
 </tr>
 <tr grouplength="2">
 <td colspan="2" style="border-bottom: 1px solid;">
-<strong>[![MacOS](https://shields.io/badge/MacOS--9cf?logo=Apple&style=social)](https://cran.r-project.org/web/checks/check_results_ammistability.html)</strong>
+<strong>[![MacOS](https://shields.io/badge/MacOS--9cf?logo=Apple&style=social)](https://cran.r-project.org/web/checks/check_results_j.aravind_at_icar.gov.in.html)</strong>
 </td>
 </tr>
 <tr>
@@ -230,7 +232,7 @@ r-release-macos-x86\_64
 </td>
 <td style="text-align:left;">
 [![CRAN check -
-r-release-macos-x86\_64](https://cranchecks.info/badges/flavor/r-release-macos-x86_64/EvaluateCore)](https://cran.r-project.org/web/checks/check_results_EvaluateCore.html)
+r-release-macos-x86\_64](https://cranchecks.info/badges/flavor/r-release-macos-x86_64/EvaluateCore)](https://cran.r-project.org/web/checks/check_results_j.aravind_at_icar.gov.in.html)
 </td>
 </tr>
 <tr>
@@ -239,7 +241,7 @@ r-oldrel-macos-x86\_64
 </td>
 <td style="text-align:left;">
 [![CRAN check -
-r-oldrel-macos-x86\_64](https://cranchecks.info/badges/flavor/r-oldrel-macos-x86_64/EvaluateCore)](https://cran.r-project.org/web/checks/check_results_EvaluateCore.html)
+r-oldrel-macos-x86\_64](https://cranchecks.info/badges/flavor/r-oldrel-macos-x86_64/EvaluateCore)](https://cran.r-project.org/web/checks/check_results_j.aravind_at_icar.gov.in.html)
 </td>
 </tr>
 </tbody>
@@ -256,19 +258,20 @@ citation("EvaluateCore")
 
     To cite the R package 'EvaluateCore' in publications use:
 
-      Aravind, J., Kaur, V., Wankhede, D. P. and Nanjundan, J. (2021).  EvaluateCore: Quality Evaluation of Core Collections. R
-      package version 0.1.2, https://aravind-j.github.io/EvaluateCore/https://CRAN.R-project.org/package=EvaluateCore.
+      Aravind, J., Kaur, V., Wankhede, D. P. and Nanjundan, J. (2022).  EvaluateCore:
+      Quality Evaluation of Core Collections. R package version 0.1.3,
+      https://aravind-j.github.io/EvaluateCore/https://CRAN.R-project.org/package=EvaluateCore.
 
     A BibTeX entry for LaTeX users is
 
       @Manual{,
         title = {EvaluateCore: Quality Evaluation of Core Collections},
         author = {J. Aravind and Vikender Kaur and Dhammaprakash Pandhari Wankhede and J. Nanjundan},
-        year = {2021},
-        note = {R package version 0.1.2},
+        year = {2022},
+        note = {R package version 0.1.3},
         note = {https://aravind-j.github.io/EvaluateCore/},
         note = {https://CRAN.R-project.org/package=EvaluateCore},
       }
 
-    This free and open-source software implements academic research by the authors and co-workers. If you use it, please support
-    the project by citing the package.
+    This free and open-source software implements academic research by the authors and
+    co-workers. If you use it, please support the project by citing the package.

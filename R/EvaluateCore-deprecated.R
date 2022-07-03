@@ -16,12 +16,11 @@
 #  https://www.r-project.org/Licenses/
 
 
-
-if (getRversion() >= "2.15.1")  {
-  utils::globalVariables(
-    c(
-      "..prop..", "PC", "Proportion of Variance", "Trait", "Ty", "quantitative",
-      "value", "x", "y", "lower", "upper"
-    )
-  )
-}
+#' @title Deprecated functions in package \pkg{EvaluateCore}.
+#' @description The functions listed below are deprecated and will be defunct in
+#'   the near future. When possible, alternative functions with similar
+#'   functionality are also mentioned. Help pages for deprecated functions are
+#'   available at \code{help("<function>-deprecated")}.
+#' @name EvaluateCore-deprecated
+#' @keywords internal
+NULL

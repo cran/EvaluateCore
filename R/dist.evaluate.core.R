@@ -1,6 +1,6 @@
 ### This file is part of 'EvaluateCore' package for R.
 
-### Copyright (C) 2018-2021, ICAR-NBPGR.
+### Copyright (C) 2018-2022, ICAR-NBPGR.
 #
 # EvaluateCore is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by
@@ -20,8 +20,8 @@
 #' Compute average Entry-to-nearest-entry distance
 #' (\mjteqn{E\textrm{-}EN}{E\text{-}EN}{E-EN}),
 #' Accession-to-nearest-entry distance
-#' (\mjteqn{A\textrm{-}EN}{E\text{-}EN}{E-EN}) and
-#' Entry-to-entry distance (\mjteqn{E\textrm{-}E}{E\text{-}EN}{E-EN})
+#' (\mjteqn{A\textrm{-}EN}{E\text{-}EN}{A-EN}) and
+#' Entry-to-entry distance (\mjteqn{E\textrm{-}E}{E\text{-}EN}{E-E})
 #' \insertCite{odong_quality_2013}{EvaluateCore}
 #' to evaluate a core set (CS) selected from an entire collection (EC).
 #' \loadmathjax
@@ -39,8 +39,8 @@
 #'
 #' @return A data frame with the average values of
 #' \mjteqn{E\textrm{-}EN}{E\text{-}EN}{E-EN},
-#' \mjteqn{A\textrm{-}EN}{E\text{-}EN}{E-EN} and
-#' \mjteqn{E\textrm{-}E}{E\text{-}EN}{E-EN}.
+#' \mjteqn{A\textrm{-}EN}{E\text{-}EN}{A-EN} and
+#' \mjteqn{E\textrm{-}E}{E\text{-}EN}{E-E}.
 #'
 #' @references
 #'
@@ -56,31 +56,23 @@
 #'
 #' @examples
 #'
-#' ####################################
-#' # Use data from R package ccChooser
-#' ####################################
+#' data("cassava_CC")
+#' data("cassava_EC")
 #'
-#' library(ccChooser)
-#' data("dactylis_CC")
-#' data("dactylis_EC")
-#'
-#' ec <- cbind(genotypes = rownames(dactylis_EC), dactylis_EC[, -1])
+#' ec <- cbind(genotypes = rownames(cassava_EC), cassava_EC)
 #' ec$genotypes <- as.character(ec$genotypes)
 #' rownames(ec) <- NULL
-#' ec[, c("X1", "X6", "X7")] <- lapply(ec[, c("X1", "X6", "X7")],
-#'                                     function(x) cut(x, breaks = 4))
-#' ec[, c("X1", "X6", "X7")] <- lapply(ec[, c("X1", "X6", "X7")],
-#'                                     function(x) factor(as.numeric(x)))
-#' head(ec)
 #'
-#' core <- rownames(dactylis_CC)
+#' core <- rownames(cassava_CC)
 #'
-#' quant <- c("X2", "X3", "X4", "X5", "X8")
-#' qual <- c("X1", "X6", "X7")
+#' quant <- c("NMSR", "TTRN", "TFWSR", "TTRW", "TFWSS", "TTSW", "TTPW", "AVPW",
+#'            "ARSR", "SRDM")
+#' qual <- c("CUAL", "LNGS", "PTLC", "DSTA", "LFRT", "LBTEF", "CBTR", "NMLB",
+#'           "ANGB", "CUAL9M", "LVC9M", "TNPR9M", "PL9M", "STRP", "STRC",
+#'           "PSTR")
 #'
-#' ####################################
-#' # EvaluateCore
-#' ####################################
+#' ec[, qual] <- lapply(ec[, qual],
+#'                      function(x) factor(as.factor(x)))
 #'
 #' dist.evaluate.core(data = ec, names = "genotypes", quantitative = quant,
 #'                    qualitative = qual, selected = core)
@@ -99,11 +91,11 @@
 #'                                  types = dtype)
 #'
 #' # Compute average distances
-#' EN <- evaluateCore(core = rownames(dactylis_CC), data = ecdata,
+#' EN <- evaluateCore(core = rownames(cassava_CC), data = ecdata,
 #'                    objective = objective("EN", "GD"))
-#' AN <- evaluateCore(core = rownames(dactylis_CC), data = ecdata,
+#' AN <- evaluateCore(core = rownames(cassava_CC), data = ecdata,
 #'                    objective = objective("AN", "GD"))
-#' EE <- evaluateCore(core = rownames(dactylis_CC), data = ecdata,
+#' EE <- evaluateCore(core = rownames(cassava_CC), data = ecdata,
 #'                    objective = objective("EE", "GD"))
 #' EN
 #' AN
@@ -135,7 +127,7 @@ dist.evaluate.core <- function(data, names, quantitative, qualitative,
     data <- as.data.frame(data)
   }
 
-  traits <- c(quantitative, qualitative)
+  # traits <- c(quantitative, qualitative)
   # # quantitative (RD); qualitative(NS)
   # dtype <- c(rep("RD", length(quantitative)),
   #            rep("NS", length(qualitative)))
@@ -149,8 +141,8 @@ dist.evaluate.core <- function(data, names, quantitative, qualitative,
         stop('Distance matrix "d" is not an object of class "dist".')
     }
     dsize <- as.integer(attr(d, "Size"))
-    if (nrow(data) != dsize){
-      stop('Dimentions of distance matrix "d" and "data" do not match.')
+    if (nrow(data) != dsize) {
+      stop('Dimensions of distance matrix "d" and "data" do not match.')
     }
 
     if (!(all(labels(d) %in% data[, names]) &
@@ -158,13 +150,14 @@ dist.evaluate.core <- function(data, names, quantitative, qualitative,
       stop('Labels of distance matrix "d" and "data" do not match.')
     }
   } else {
-    rownames(data) <- data[,names]
-    d <- cluster::daisy(data[,c(quantitative, qualitative)],
+    rownames(data) <- data[, names]
+    d <- cluster::daisy(data[, c(quantitative, qualitative)],
                         metric = "gower")
   }
 
   # # Prep phenotype
-  # dataf <- corehunter::phenotypes(data = dataf[, c(quantitative, qualitative)],
+  # dataf <- corehunter::phenotypes(data = dataf[, c(quantitative,
+  #                                                  qualitative)],
   #                                 types = dtype)
   # # Compute average distances
   # EN <- evaluateCore(core = selected, data = dataf,

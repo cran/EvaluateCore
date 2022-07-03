@@ -1,6 +1,6 @@
 ### This file is part of 'EvaluateCore' package for R.
 
-### Copyright (C) 2018-2021, ICAR-NBPGR.
+### Copyright (C) 2018-2022, ICAR-NBPGR.
 #
 # EvaluateCore is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by
@@ -28,10 +28,10 @@
 #' @param include.highlight If \code{TRUE}, the highlighted individuals are
 #'   included in the frequency distribution histogram. Default is \code{TRUE}.
 #' @param highlight.se Optional data frame of standard errors for the
-#'   individuals specified in \code{highlight}. It shoudl have the same column
+#'   individuals specified in \code{highlight}. It should have the same column
 #'   names as in \code{data}.
 #' @param highlight.col The colour(s) to be used to highlighting individuals in
-#'   the plot as a character vector of the same length as \code{higlight}. Must
+#'   the plot as a character vector of the same length as \code{highlight}. Must
 #'   be valid colour values in R (named colours, hexadecimal representation,
 #'   index of colours [\code{1:8}] in default R \code{palette()} etc.).
 #'
@@ -52,47 +52,47 @@
 #'
 #' @examples
 #'
-#' ####################################
-#' # Use data from R package ccChooser
-#' ####################################
+#' data("cassava_CC")
+#' data("cassava_EC")
 #'
-#' library(ccChooser)
-#' data("dactylis_CC")
-#' data("dactylis_EC")
-#'
-#' ec <- cbind(genotypes = rownames(dactylis_EC), dactylis_EC[, -1])
+#' ec <- cbind(genotypes = rownames(cassava_EC), cassava_EC)
 #' ec$genotypes <- as.character(ec$genotypes)
 #' rownames(ec) <- NULL
-#' ec[, c("X1", "X6", "X7")] <- lapply(ec[, c("X1", "X6", "X7")],
-#'                                     function(x) cut(x, breaks = 4))
-#' ec[, c("X1", "X6", "X7")] <- lapply(ec[, c("X1", "X6", "X7")],
-#'                                     function(x) factor(as.numeric(x)))
-#' head(ec)
 #'
-#' core <- rownames(dactylis_CC)
+#' core <- rownames(cassava_CC)
 #'
-#' quant <- c("X2", "X3", "X4", "X5", "X8")
-#' qual <- c("X1", "X6", "X7")
+#' quant <- c("NMSR", "TTRN", "TFWSR", "TTRW", "TFWSS", "TTSW", "TTPW", "AVPW",
+#'            "ARSR", "SRDM")
+#' qual <- c("CUAL", "LNGS", "PTLC", "DSTA", "LFRT", "LBTEF", "CBTR", "NMLB",
+#'           "ANGB", "CUAL9M", "LVC9M", "TNPR9M", "PL9M", "STRP", "STRC",
+#'           "PSTR")
 #'
-#' ####################################
-#' # EvaluateCore
-#' ####################################
+#' ec[, qual] <- lapply(ec[, qual],
+#'                      function(x) factor(as.factor(x)))
 #'
 #' \donttest{
 #' freqdist.evaluate.core(data = ec, names = "genotypes",
 #'                        quantitative = quant, qualitative = qual,
 #'                        selected = core)
 #'
-#' checks <- c("D120559", "D120773")
+#' checks <- c("TMe-1199", "TMe-1957", "TMe-3596", "TMe-3392")
 #'
 #' freqdist.evaluate.core(data = ec, names = "genotypes",
 #'                        quantitative = quant, qualitative = qual,
 #'                        selected = core,
 #'                        highlight = checks, highlight.col = "red")
 #'
-#' quant.se <- data.frame(genotypes = checks, X2 = c(0.275, 0.25),
-#'                        X3 = c(0.1, 0.081), X4 = c(0.002, 0.002),
-#'                        X5 = c(0.093, 0.087), X8 = c(0.125, 0.074))
+#' quant.se <- data.frame(genotypes = checks,
+#'                        NMSR = c(0.107, 0.099, 0.106, 0.062),
+#'                        TTRN = c(0.081, 0.072, 0.057, 0.049),
+#'                        TFWSR = c(0.089, 0.031, 0.092, 0.097),
+#'                        TTRW = c(0.064, 0.031, 0.071, 0.071),
+#'                        TFWSS = c(0.106, 0.071, 0.121, 0.066),
+#'                        TTSW = c(0.084, 0.045, 0.066, 0.054),
+#'                        TTPW = c(0.098, 0.052, 0.111, 0.082),
+#'                        AVPW = c(0.074, 0.038, 0.054, 0.061),
+#'                        ARSR = c(0.104, 0.019, 0.204, 0.044),
+#'                        SRDM = c(0.078, 0.138, 0.076, 0.079))
 #'
 #' freqdist.evaluate.core(data = ec, names = "genotypes",
 #'                        quantitative = quant,
@@ -127,7 +127,7 @@ freqdist.evaluate.core <- function(data, names, quantitative, qualitative,
   }
 
   if (!is.null(highlight)) {
-    if (!is.character(highlight)){
+    if (!is.character(highlight)) {
       stop('"highlight" should be a character vector')
     }
     # highlight are present in treatment levels
@@ -161,7 +161,7 @@ freqdist.evaluate.core <- function(data, names, quantitative, qualitative,
     }
 
     if (dim(highlight.se)[1] != length(highlight)) {
-      stop('"highlight.se" is of incorrect dimentions')
+      stop('"highlight.se" is of incorrect dimensions')
     }
 
     # check if 'names' column is present in 'data'
@@ -192,7 +192,7 @@ freqdist.evaluate.core <- function(data, names, quantitative, qualitative,
     }
 
     # check if names to be highlighted are present in highlight.se
-    if (!all(highlight %in% highlight.se[, names])){
+    if (!all(highlight %in% highlight.se[, names])) {
       miss <- paste(highlight[!(highlight %in% highlight.se[, names])], collapse = ", ")
       stop(paste('Following individual(s) specified in "highlight"',
                  'are not present in', names, 'column of "highlight.se":\n',
@@ -220,11 +220,11 @@ freqdist.evaluate.core <- function(data, names, quantitative, qualitative,
   traits2 <- paste("`", traits, "`", sep = "")
 
   dataf$`[Type]` <- factor(dataf$`[Type]`)
-  dataf$`[Type]` <- factor(dataf$`[Type]`, levels(dataf$`[Type]`)[c(2,1)])
+  dataf$`[Type]` <- factor(dataf$`[Type]`, levels(dataf$`[Type]`)[c(2, 1)])
 
   # Fetch highlights
   if (!is.null(highlight)) {
-    datah <- unique( dataf[dataf[, names] %in% highlight, c(names,traits)])
+    datah <- unique(dataf[dataf[, names] %in% highlight, c(names, traits)])
     datah[, names] <- as.factor(datah[, names])
   }
 
@@ -251,7 +251,7 @@ freqdist.evaluate.core <- function(data, names, quantitative, qualitative,
     # plot normal distribution curve if quantitative
     if (traits[i] %in% quantitative) {
       G1 <- G1 +
-        stat_function(geom = "line", fun = function(x, mean, sd, n, bw){
+        stat_function(geom = "line", fun = function(x, mean, sd, n, bw) {
           dnorm(x = x, mean = mean, sd = sd) * n * bw},
           args = list(mean = mean(data[, traits[i]], na.rm = TRUE),
                       sd = sd(data[, traits[i]], na.rm = TRUE),
@@ -259,21 +259,21 @@ freqdist.evaluate.core <- function(data, names, quantitative, qualitative,
     }
 
 
-    if (traits[i] %in% quantitative) {
-      G1 <- G1 +
-        scale_x_continuous(limits = c((min(dataf[, traits[i]],
-                                           na.rm = TRUE)),
-                                      (max(dataf[, traits[i]],
-                                           na.rm = TRUE))))
-    }
-
-    if (traits[i] %in% qualitative) {
-      G1 <- G1 +
-        scale_x_continuous(limits = c((min(dataf[, traits[i]],
-                                           na.rm = TRUE)) - 1,
-                                      (max(dataf[, traits[i]],
-                                           na.rm = TRUE)) + 1))
-    }
+    # if (traits[i] %in% quantitative) {
+    #   G1 <- G1 +
+    #     scale_x_continuous(limits = c((min(dataf[, traits[i]],
+    #                                        na.rm = TRUE)),
+    #                                   (max(dataf[, traits[i]],
+    #                                        na.rm = TRUE))))
+    # }
+    #
+    # if (traits[i] %in% qualitative) {
+    #   G1 <- G1 +
+    #     scale_x_continuous(limits = c((min(dataf[, traits[i]],
+    #                                        na.rm = TRUE)) - 1,
+    #                                   (max(dataf[, traits[i]],
+    #                                        na.rm = TRUE)) + 1))
+    # }
 
     if (!is.null(highlight)) {
 
@@ -289,7 +289,7 @@ freqdist.evaluate.core <- function(data, names, quantitative, qualitative,
 
       }
 
-      G2 <- ggplot(sedf, aes_string(y= names, x = traits2[i])) +
+      G2 <- ggplot(sedf, aes_string(y = names, x = traits2[i])) +
         geom_point(colour = highlight.col) +
         labs(x = NULL, y = NULL) +
         theme_bw() +
@@ -299,21 +299,21 @@ freqdist.evaluate.core <- function(data, names, quantitative, qualitative,
         theme(plot.margin = unit(c(0.25, 0.1, 0, 0.25), "cm"),
               axis.text = element_text(colour = "black"))
 
-      if (traits[i] %in% quantitative) {
-        G2 <- G2 +
-          scale_x_continuous(limits = c((min(dataf[, traits[i]],
-                                             na.rm = TRUE)),
-                                        (max(dataf[, traits[i]],
-                                             na.rm = TRUE))))
-      }
-
-      if (traits[i] %in% qualitative) {
-        G2 <- G2 +
-          scale_x_continuous(limits = c((min(dataf[, traits[i]],
-                                             na.rm = TRUE)) - 1,
-                                        (max(dataf[, traits[i]],
-                                             na.rm = TRUE)) + 1))
-      }
+      # if (traits[i] %in% quantitative) {
+      #   G2 <- G2 +
+      #     scale_x_continuous(limits = c((min(dataf[, traits[i]],
+      #                                        na.rm = TRUE)),
+      #                                   (max(dataf[, traits[i]],
+      #                                        na.rm = TRUE))))
+      # }
+      #
+      # if (traits[i] %in% qualitative) {
+      #   G2 <- G2 +
+      #     scale_x_continuous(limits = c((min(dataf[, traits[i]],
+      #                                        na.rm = TRUE)) - 1,
+      #                                   (max(dataf[, traits[i]],
+      #                                        na.rm = TRUE)) + 1))
+      # }
 
       if (!is.null(highlight) & !is.null(highlight.se)) {
 
@@ -325,7 +325,7 @@ freqdist.evaluate.core <- function(data, names, quantitative, qualitative,
 
       legind <- grep("guide-box", ggplotGrob(G1)$grobs)
       leg <- ggplotGrob(G1)$grobs[[legind]]
-      G1 <- G1 + theme(legend.position="none")
+      G1 <- G1 + theme(legend.position = "none")
 
       G <- rbind(ggplotGrob(G2), ggplotGrob(G1), size = "max")
       G <- resize_heights(G, c(1, 3))
@@ -370,8 +370,8 @@ binw <- function(x, method = c("fd", "scott", "sturges")) {
 }
 
 if (getRversion() >= "4.0.0")  {
-  resize_heights <- function(g, heights = rep(1, length(idpanels))){
-    idpanels <- unique(g$layout[grepl("panel",g$layout$name), "t"])
+  resize_heights <- function(g, heights = rep(1, length(idpanels))) {
+    idpanels <- unique(g$layout[grepl("panel", g$layout$name), "t"])
     g$heights <- grid::unit(g$heights, "null")
     g$heights[idpanels] <- grid::unit(do.call(grid::unit,
                                               list(heights, 'null')), "null")
@@ -380,7 +380,7 @@ if (getRversion() >= "4.0.0")  {
 } else {
   unit.list <- getFromNamespace("unit.list", "grid")
 
-  resize_heights <- function(g, heights = rep(1, length(idpanels))){
+  resize_heights <- function(g, heights = rep(1, length(idpanels))) {
     idpanels <- unique(g$layout[grepl("panel", g$layout$name), "t"])
     g$heights <- unit.list(g$heights)
     hunits <- lapply(heights, unit, "null")

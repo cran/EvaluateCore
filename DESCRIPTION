@@ -1,6 +1,6 @@
 Package: EvaluateCore
 Title: Quality Evaluation of Core Collections
-Version: 0.1.2
+Version: 0.1.3
 Authors@R: c(
     person(given = "J.", family = "Aravind",
            email = "j.aravind@icar.gov.in",
@@ -25,10 +25,10 @@ Description: Implements various quality evaluation statistics to assess the
     value of plant germplasm core collections using qualitative and 
     quantitative phenotypic trait data according to Odong et al. (2015) 
     <doi:10.1007/s00122-012-1971-y>.
-Copyright: 2018-2021, ICAR-NBPGR
+Copyright: 2018-2022, ICAR-NBPGR
 License: GPL-2 | GPL-3
 Encoding: UTF-8
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.0
 URL: https://github.com/aravind-j/EvaluateCore
         https://CRAN.R-project.org/package=EvaluateCore
         https://aravind-j.github.io/EvaluateCore/
@@ -36,12 +36,13 @@ URL: https://github.com/aravind-j/EvaluateCore
 BugReports: https://github.com/aravind-j/EvaluateCore/issues
 RdMacros: mathjaxr, Rdpack
 Depends: R (>= 3.5.0)
-Imports: agricolae, car, cluster, dplyr, entropy, ggcorrplot, ggplot2,
-        grDevices, gridExtra, kSamples, mathjaxr, psych, reshape2,
-        Rdpack, stats, vegan
-Suggests: ccChooser, corehunter, rJava (>= 0.9-8)
+Imports: agricolae, boot, car, cluster, dplyr, entropy, ggcorrplot,
+        ggplot2, grDevices, gridExtra, kSamples, mathjaxr, psych,
+        reshape2, Rdpack, stats, vegan
+Suggests: corehunter, pander, rJava (>= 0.9-8)
+LazyData: true
 NeedsCompilation: no
-Packaged: 2021-06-11 19:07:35 UTC; J. Aravind
+Packaged: 2022-06-30 12:06:32 UTC; J. Aravind
 Author: J. Aravind [aut, cre] (<https://orcid.org/0000-0002-4791-442X>),
   Vikender Kaur [aut] (<https://orcid.org/0000-0001-9698-7329>),
   Dhammaprakash Pandhari Wankhede [aut]
@@ -50,4 +51,4 @@ Author: J. Aravind [aut, cre] (<https://orcid.org/0000-0002-4791-442X>),
   ICAR-NBGPR [cph] (www.nbpgr.ernet.in)
 Maintainer: J. Aravind <j.aravind@icar.gov.in>
 Repository: CRAN
-Date/Publication: 2021-06-12 06:50:05 UTC
+Date/Publication: 2022-07-03 12:50:02 UTC

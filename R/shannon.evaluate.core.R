@@ -1,6 +1,6 @@
 ### This file is part of 'EvaluateCore' package for R.
 
-### Copyright (C) 2018-2021, ICAR-NBPGR.
+### Copyright (C) 2018-2022, ICAR-NBPGR.
 #
 # EvaluateCore is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@
 #'
 #' Shannon-Weaver Diversity Index (\mjseqn{H'}) is computed as follows.
 #'
-#' \mjsdeqn{H' = -\sum_{i=1}^{k}p_{i}log(p_{i})}
+#' \mjsdeqn{H' = -\sum_{i=1}^{k}p_{i} \ln(p_{i})}
 #'
 #' Where \mjseqn{p_{i}} denotes the proportion in the group \mjseqn{k}.
 #'
@@ -36,9 +36,8 @@
 #' The Shannon equitability index (\mjseqn{E_{H}}) is the Shannon diversity
 #' index divided by the maximum diversity.
 #'
-#' \mjsdeqn{E_{H} = \frac{H}{\ln{(k)}}}
+#' \mjsdeqn{E_{H} = \frac{H'}{\ln{(k)}}}
 #'
-#' @inheritParams chisquare.evaluate.core
 #'
 #' @return A data frame with the following columns. \item{Trait}{The qualitative
 #'   trait.} \item{EC_H}{The Shannon-Weaver Diversity Index (\mjseqn{H'}) for
@@ -52,7 +51,6 @@
 #'
 #' @importFrom psych shannon
 #' @importFrom dplyr bind_rows
-#' @export
 #'
 #' @references
 #'
@@ -60,37 +58,44 @@
 #'
 #' @examples
 #'
-#' ####################################
-#' # Use data from R package ccChooser
-#' ####################################
+#' data("cassava_CC")
+#' data("cassava_EC")
 #'
-#' library(ccChooser)
-#' data("dactylis_CC")
-#' data("dactylis_EC")
-#'
-#' ec <- cbind(genotypes = rownames(dactylis_EC), dactylis_EC[, -1])
+#' ec <- cbind(genotypes = rownames(cassava_EC), cassava_EC)
 #' ec$genotypes <- as.character(ec$genotypes)
 #' rownames(ec) <- NULL
-#' ec[, c("X1", "X6", "X7")] <- lapply(ec[, c("X1", "X6", "X7")],
-#'                                     function(x) cut(x, breaks = 4))
-#' ec[, c("X1", "X6", "X7")] <- lapply(ec[, c("X1", "X6", "X7")],
-#'                                     function(x) factor(as.numeric(x)))
-#' head(ec)
 #'
-#' core <- rownames(dactylis_CC)
+#' core <- rownames(cassava_CC)
 #'
-#' quant <- c("X2", "X3", "X4", "X5", "X8")
-#' qual <- c("X1", "X6", "X7")
+#' quant <- c("NMSR", "TTRN", "TFWSR", "TTRW", "TFWSS", "TTSW", "TTPW", "AVPW",
+#'            "ARSR", "SRDM")
+#' qual <- c("CUAL", "LNGS", "PTLC", "DSTA", "LFRT", "LBTEF", "CBTR", "NMLB",
+#'           "ANGB", "CUAL9M", "LVC9M", "TNPR9M", "PL9M", "STRP", "STRC",
+#'           "PSTR")
 #'
-#' ####################################
-#' # EvaluateCore
-#' ####################################
+#' ec[, qual] <- lapply(ec[, qual],
+#'                      function(x) factor(as.factor(x)))
 #'
 #' shannon.evaluate.core(data = ec, names = "genotypes",
 #'                       qualitative = qual, selected = core)
 #'
+#' @name shannon.evaluate.core-deprecated
+#' @usage shannon.evaluate.core(data, names, qualitative, selected)
+#' @seealso \code{\link{EvaluateCore-deprecated}}
+#' @keywords internal
+NULL
+
+#' @rdname EvaluateCore-deprecated
+#' @section \code{shannon.evaluate.core}:
+#' For \code{shannon.evaluate.core}, use \code{\link{diversity.evaluate.core}}.
 #'
+#' @export
 shannon.evaluate.core <- function(data, names, qualitative, selected) {
+
+  .Deprecated("diversity.evaluate.core",
+              msg = c("`shannon.evaluate.core()` was deprecated in EvaluateCore 0.1.3.\n",
+                      "Please use `diversity.evaluate.core()` instead."))
+
   # Checks
   checks.evaluate.core(data = data, names = names,
                        qualitative = qualitative,
